@@ -10,6 +10,7 @@ console.log(ENV.DB_URL);
 
 
 const startServer = async () => {
+    
     try{
         await connectDB();
         app.listen(ENV.PORT,()=> console.log(`✅ Server is running on port ${ENV.PORT}`));
