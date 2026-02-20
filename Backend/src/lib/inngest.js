@@ -1,7 +1,7 @@
 import {Inngest} from "inngest";
-import { connectDB } from "./db";
-import User from "./models/User";
-import e from "express";
+import { connectDB } from "./db.js";
+import User from "../models/User.js";
+import express from "express";
 
 
 export const inngest = new Inngest({id:"Remote Interview Platform"});
