@@ -1,6 +1,7 @@
 import {Inngest} from "inngest";
 import { connectDB } from "./db";
 import User from "./models/User";
+import e from "express";
 
 
 export const inngest = new Inngest({id:"Remote Interview Platform"});
@@ -17,7 +18,8 @@ const syncUser = inngest.createFunction(
 
         const newUser = {
             clerkId: id,
-            email: `${first_name || ""} ${last_name || ""}`,
+            email: email_addresses[0].email_address,
+            name: `${first_name || ""} ${last_name || ""}`,
             profileImage: image_url || "",
         }
         await User.create(newUser);
