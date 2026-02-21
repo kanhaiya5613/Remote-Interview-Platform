@@ -1,7 +1,6 @@
 import {Inngest} from "inngest";
 import { connectDB } from "./db.js";
 import User from "../models/User.js";
-import express from "express";
 
 
 export const inngest = new Inngest({id:"Remote Interview Platform"});
@@ -23,6 +22,7 @@ const syncUser = inngest.createFunction(
             profileImage: image_url || "",
         }
         await User.create(newUser);
+        // todo : do sth else
     }
 )
 
@@ -34,6 +34,7 @@ const deleteUserFromDB = inngest.createFunction(
 
         const {id}= event.data;
         await User.deleteOne({clerkId});
+        // todo : do sth else
     }
 )
-export const functions = [syncUser]
+export const functions = [syncUser, deleteUserFromDB]
