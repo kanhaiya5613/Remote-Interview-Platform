@@ -86,7 +86,7 @@ export async function getActiveSessions(_,res){
 export async function getMyRecentSessions(req,res){
     // steps
     // 1. get sessions where user is host or participant
-    // 2. get sessions where status is completed and user there host or participants
+    // 2. get sessions where status is completed and user there host or participant
     // 3. sort them
     // 4. limit 20 sessions
     try {
@@ -95,7 +95,7 @@ export async function getMyRecentSessions(req,res){
         // ger sessions where user is host or participant
         const sessions = await Session.find({
             status:"completed",
-            $or: [{host: userId}, {participants: userId}]
+            $or: [{host: userId}, {participant: userId}]
         })
         .sort({createdAt: -1})
         .limit(20);
@@ -116,7 +116,7 @@ export async function getSessionById(req,res){
         const {id} = req.params;
         const session = await Session.findById(id)
         .populate("host","name profileImage email clerkId")
-        .populate("participants","name profileImage email clerkId");
+        .populate("participant","name profileImage email clerkId");
         
         if(!session){
             return res.status(404).json({message:"Session not found"});
@@ -200,7 +200,7 @@ export async function endSession(req,res){
         await channel.delete()
 
     } catch (error) {
-        console.log("rror while Ending the Session", error);
+        console.log("error while Ending the Session", error);
         res.status(500).json({message: "Internal Server Error"});
     }
 }
