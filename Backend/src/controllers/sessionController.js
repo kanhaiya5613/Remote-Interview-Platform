@@ -121,27 +121,13 @@ export async function getSessionById(req,res){
         if(!session){
             return res.status(404).json({message:"Session not found"});
         }
-export async function getSessionById(req,res){
-    // steps
-    // 1. get id of the session from params
-    // 2. find the session by id and populate host and participant details (name, profileImage, email, clerkId) from User model
-    try {
-        const {id} = req.params;
-        const userId = req.user._id;
-        const session = await Session.findById(id)
-        .populate("host","name profileImage email clerkId")
-        .populate("participant","name profileImage email clerkId");
-        
-        if(!session){
-            return res.status(404).json({message:"Session not found"});
-        }
         if(session.status !== "active"){
             return res.status(400).json({message: "Cannot join a completed session"})
         }
-        if(session.host._id.toString() === userId.toString()){
+        if(session.host.toString() === userId.toString()){
             return res.status(400).json({message:"Host cannot join their own session as participant"});
         }
-        res.status(200).json({session});        res.status(200).json({session});
+        res.status(200).json({session});
     } catch (error) {
         console.log("Error in getSessionById controller:", error.message);
         res.status(500).json({message:"Internal Server Error"});
