@@ -12,9 +12,9 @@ function App() {
     <>
     <Toaster toastOptions={{duration:3000}}/>
    <Routes>
-    <Route path="/" element={!isSignedIn?<HomePage/>:<Navigate to={"/dashboard"}/>}/>
-    <Route path="/dashboard" element={isSignedIn?<DashboardPage/>:<Navigate to={"/"}/>}/>
-    <Route path="/problems" element={ isSignedIn ? <ProblemsPage/> : <Navigate to={"/"}/>}/>
+    <Route path="/" element={!isSignedIn ? <HomePage/> : <Navigate to="/dashboard" replace />}/>
+    <Route path="/dashboard" element={isSignedIn ? <DashboardPage/> : <Navigate to="/" replace />}/>
+    <Route path="/problems" element={isSignedIn ? <ProblemsPage/> : <Navigate to="/" replace />}/>
    </Routes>
    </>
   )
