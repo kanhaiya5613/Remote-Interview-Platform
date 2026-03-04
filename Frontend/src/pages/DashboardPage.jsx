@@ -1,7 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 export default function DashboardPage() {
   return (
-    <div>DashboardPage</div>
+    <div>
+      <Navbar/>
+      DashboardPage</div>
   )
 }
