@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import { CheckIcon, Target, UsersIcon, VideoIcon, Code2Icon,ZapIcon, UserIcon } from "lucide-react"
+import { CheckIcon, Star, UsersIcon, VideoIcon, Code2Icon,ZapIcon, UserIcon } from "lucide-react"
 import { SignInButton } from "@clerk/clerk-react"
 import { ArrowRightIcon } from "lucide-react"
 function HomePage() {
@@ -13,7 +13,7 @@ function HomePage() {
             className="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
             <div>
               <div className="size-10 rounded-xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center shadow-lg">
-                <Target className="sixe-6 text-white" />
+                <Star className="sixe-6 text-white" />
               </div>
             </div>
             <div className="flex flex-col">
