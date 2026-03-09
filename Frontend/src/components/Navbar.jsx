@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router'
 import { BookOpenIcon, LayoutDashboard, Star } from 'lucide-react'
 import { UserButton } from '@clerk/clerk-react';
