@@ -3,6 +3,10 @@ import Navbar from '../components/Navbar'
 import { useUser } from '@clerk/clerk-react'
 import { useState } from 'react'
 import { useActiveSessions, useCreateSession, useMyRecentSessions } from "../hooks/useSessions.js"
+import RecentSessions from '../components/RecentSessions.jsx'
+import CreateSessionModal from '../components/CreateSessionModal.jsx'
+import StatsCard from '../components/StatsCard.jsx'
+import ActiveSessions from '../components/ActiveSessions.jsx'
 import WelcomeSection from "../components/WelcomeSection.jsx"
 export default function DashboardPage() {
   const navigate = useNavigate()
@@ -38,6 +42,22 @@ export default function DashboardPage() {
     <div className='min-h-screen bg-base-300'>
       <Navbar />
       <WelcomeSection onCreateSession={() => setShowCreateModal} />
+      {/* Grid Layout */}
+      <div className='container mx-auto px-6 pb-16'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+          <StatsCard/>
+          <ActiveSessions />
+        </div>
+        <RecentSessions/>
+      </div>
     </div>
+    <CreateSessionModal
+      isOpen={showCreateModal}
+      onClose={()=>setShowCreateModal(false)}
+      roomConfig={roomConfig}
+      setRoomConfig={setRoomConfig}
+      onCreateRoom={handleCreateRoom}
+      isCreating={createSessionMutation.isPending}
+    />
   </>
 }
