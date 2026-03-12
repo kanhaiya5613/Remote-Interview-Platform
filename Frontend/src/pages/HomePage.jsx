@@ -99,7 +99,7 @@ function HomePage() {
           </div>
           {/* RIGHT CONTENT */}
           <img 
-          src="/hero.png"
+          src="/Home.png"
           alt="CodeCollab Platform"
           className="w-full h-auto rounded-3xl shadow-2xl border-4 border-base-100 hover:scale-105 transition-transform duration-500"
           />
