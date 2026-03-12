@@ -12,7 +12,7 @@ export async function createSession(req, res) {
         const { problem, difficulty } = req.body;
         const userId = req.user._id;
         const clerkId = req.user.clerkId;
-
+        console.log(userId)
         if (!problem || !difficulty) {
             return res.status(400).json({ message: "Problem and difficulty are required" })
         }
@@ -73,6 +73,7 @@ export async function getActiveSessions(_, res) {
     try {
         const sessions = await Session.find({ status: "active" })
             .populate("host", "name profileImage email clerkId")
+            .populate("participant", "name profileImage email clerkId")
             .sort({ createdAt: -1 })
             .limit(20);
 
@@ -91,7 +92,7 @@ export async function getMyRecentSessions(req, res) {
     // 4. limit 20 sessions
     try {
         const userId = req.user?._id; // The '?' prevents the crash
-
+        console.log(userId)
         if (!userId) {
             return res.status(401).json({ message: "Unauthorized: No user found on request" });
         }

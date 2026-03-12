@@ -1,6 +1,5 @@
-import React from 'react'
 import { PROBLEMS} from "../data/problems"
-import { Code2Icon } from 'lucide-react';
+import { Code2Icon, LoaderIcon, PlusIcon } from 'lucide-react';
 function CreateSessionModal({
     isOpen,
     onClose,
@@ -58,10 +57,29 @@ function CreateSessionModal({
                                 Max Participants: <span className='font-medium'>2 (1-on-1 session)</span>
                             </p>
                         </div>
+
                     </div>
                 )}
             </div>
+            <div className="modal-action">
+                <button className="btn btn-ghost" onClick={onClose}>
+                    Cancel
+                </button>
+                <button
+                className="btn btn-primary gap-2"
+                onClick={onCreateRoom}
+                disabled={isCreating || !roomConfig.problem}
+                >
+                    {isCreating ? (
+                        <LoaderIcon className="size-5 animate-spin"/>
+                    ):(
+                        <PlusIcon className="size-5"/>
+                    )}
+                    {isCreating? "Creating..." : "Create"}
+                </button>
+            </div>
         </div>
+        <div className="modal-backdrop" onClick={onClose}/>
     </div>
   )
 }

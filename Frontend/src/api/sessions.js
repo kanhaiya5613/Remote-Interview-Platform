@@ -1,6 +1,5 @@
-import { createSession } from "react-router";
+
 import axiosInstance from "../lib/axios";
-import axios from "axios";
 
 export const sessionApi = {
     createSession: async (data) => {
