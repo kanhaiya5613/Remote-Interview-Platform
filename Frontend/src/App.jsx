@@ -8,6 +8,7 @@ import ProblemPage from './pages/ProblemPage';
 function App() {
   const { isSignedIn, isLoaded } = useUser();
   // this will fet rif of flickring effect
+  console.log(import.meta.env.VITE_API_URL)
   if (!isLoaded) return null;
   return (
     <>

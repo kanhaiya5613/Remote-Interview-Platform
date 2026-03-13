@@ -1,6 +1,6 @@
 
 import axiosInstance from "../lib/axios";
-console.log(import.meta.env.VITE_API_URL)
+
 export const sessionApi = {
     createSession: async (data) => {
         const response = await axiosInstance.post("/sessions",data)
