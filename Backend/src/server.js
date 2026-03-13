@@ -16,7 +16,7 @@ app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use(clerkMiddleware())
 app.use("/api/inngest",serve({ client: inngest, functions}));
 app.use("/api/chat",chatRoutes);
-app.use("/api/sessions",sessionRoutes);
+app.use("/sessions",sessionRoutes);
 app.get("/HEALTH",(req,res)=>{
     res.status(200).json({msg:"api is up and running"})
 });
